@@ -47,7 +47,7 @@ def delete_store_item(request, item_id):
     try:
         store_item = models.StoreItem.objects.get(id=item_id)
     except:
-        if store_item.DOES_NOT_EXIST:
-            raise Http404
+        if store_item.DoesNotExist:
+            raise Http404("item not found")
     store_item.delete()
     return redirect("store-item-list")
